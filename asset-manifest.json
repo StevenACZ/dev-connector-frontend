@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/dev-connector-frontend/static/css/main.506fcadc.chunk.css",
-    "main.js": "/dev-connector-frontend/static/js/main.7547737c.chunk.js",
-    "main.js.map": "/dev-connector-frontend/static/js/main.7547737c.chunk.js.map",
+    "main.js": "/dev-connector-frontend/static/js/main.537915fc.chunk.js",
+    "main.js.map": "/dev-connector-frontend/static/js/main.537915fc.chunk.js.map",
     "runtime-main.js": "/dev-connector-frontend/static/js/runtime-main.326be0e7.js",
     "runtime-main.js.map": "/dev-connector-frontend/static/js/runtime-main.326be0e7.js.map",
-    "static/js/2.73761c80.chunk.js": "/dev-connector-frontend/static/js/2.73761c80.chunk.js",
-    "static/js/2.73761c80.chunk.js.map": "/dev-connector-frontend/static/js/2.73761c80.chunk.js.map",
+    "static/js/2.ff52200f.chunk.js": "/dev-connector-frontend/static/js/2.ff52200f.chunk.js",
+    "static/js/2.ff52200f.chunk.js.map": "/dev-connector-frontend/static/js/2.ff52200f.chunk.js.map",
     "index.html": "/dev-connector-frontend/index.html",
     "static/css/main.506fcadc.chunk.css.map": "/dev-connector-frontend/static/css/main.506fcadc.chunk.css.map",
-    "static/js/2.73761c80.chunk.js.LICENSE.txt": "/dev-connector-frontend/static/js/2.73761c80.chunk.js.LICENSE.txt",
+    "static/js/2.ff52200f.chunk.js.LICENSE.txt": "/dev-connector-frontend/static/js/2.ff52200f.chunk.js.LICENSE.txt",
     "static/media/App.css": "/dev-connector-frontend/static/media/showcase.33c7a31b.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.326be0e7.js",
-    "static/js/2.73761c80.chunk.js",
+    "static/js/2.ff52200f.chunk.js",
     "static/css/main.506fcadc.chunk.css",
-    "static/js/main.7547737c.chunk.js"
+    "static/js/main.537915fc.chunk.js"
   ]
 }
