@@ -1,6 +1,6 @@
 // React router
 import {
-  HashRouter as Router,
+  HashRouter,
   Redirect,
   Route,
   Switch
@@ -18,7 +18,7 @@ import Navbar from './components/layout/Navbar';
 
 const App = () => {
   return (
-    <Router>
+    <HashRouter>
       <>
         <Navbar />
 
@@ -33,7 +33,7 @@ const App = () => {
           </Switch>
         </main>
       </>
-    </Router>
+    </HashRouter>
   );
 }
 
