@@ -15,7 +15,7 @@ const Login = () => {
   
   const onSubmit = e => {
     e.preventDefault();
-  }
+  };
 
   return (
     <>
@@ -53,6 +53,6 @@ const Login = () => {
       </p>
     </>
   )
-}
+};
 
-export default Login
+export default Login;
