@@ -9,18 +9,22 @@ import {
   Switch
 } from 'react-router-dom';
 
-// Redux
-import { useDispatch } from 'react-redux';
-import { loadUser } from './features/authSlice';
-import setAuthToken from './utils/setAuthToken';
-
 // Styles
 import './App.css';
+
+// Redux
+import { useDispatch } from 'react-redux';
+
+// Redux - Reducers
+import { loadUser } from './features/authSlice';
+
+// Utils
+import setAuthToken from './utils/setAuthToken';
+
+// Components
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
-
-// Components
 import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
 

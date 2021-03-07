@@ -1,3 +1,4 @@
+// React
 import React, { useState } from 'react';
 
 // React router
@@ -6,7 +7,7 @@ import { Link } from 'react-router-dom';
 // Redux
 import { useDispatch } from 'react-redux';
 
-// Reducers
+// Redux - Reducers
 import { register } from '../../features/authSlice';
 import { setAlertAsync } from '../../features/alertSlice';
 

@@ -86,4 +86,7 @@ export const loadUser = () => async dispatch => {
   }
 }
 
+// SELECT
+export const selectUser = state => state.user;
+
 export default authSlice.reducer;
