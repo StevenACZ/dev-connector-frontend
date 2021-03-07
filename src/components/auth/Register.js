@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 // React router
 import { Link } from 'react-router-dom';
 
 // Redux
 import { useDispatch } from 'react-redux';
+
+// Reducers
+import { register } from '../../features/authSlice';
 import { setAlertAsync } from '../../features/alertSlice';
 
 const Register = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [ formData, setFormData ] = useState({
     name: '',
@@ -32,7 +35,13 @@ const Register = () => {
         )
       );
     } else {
-      console.log( formData );
+      dispatch(
+        register(
+          name,
+          email,
+          password
+        )
+      );
     }
   }
 
@@ -96,6 +105,6 @@ const Register = () => {
       </p>
     </>
   )
-}
+};
 
-export default Register
+export default Register;
