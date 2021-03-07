@@ -1,8 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit'
-import alertSlice from '../features/alertSlice'
+// Redux
+import { configureStore } from '@reduxjs/toolkit';
+
+// Reducers
+import alertSlice from '../features/alertSlice';
+import authSlice from '../features/authSlice';
 
 export default configureStore({
   reducer: {
-    alert: alertSlice
+    alert: alertSlice,
+    auth: authSlice
   }
-})
+});
