@@ -1,3 +1,6 @@
+// React
+import { useEffect } from 'react';
+
 // React router
 import {
   HashRouter,
@@ -5,6 +8,11 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+
+// Redux
+import { useDispatch } from 'react-redux';
+import { loadUser } from './features/authSlice';
+import setAuthToken from './utils/setAuthToken';
 
 // Styles
 import './App.css';
@@ -16,7 +24,18 @@ import Alert from './components/layout/Alert';
 import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
 
+if ( localStorage.token ) {
+  setAuthToken( localStorage.token );
+}
+
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch( loadUser() );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <HashRouter>
       <>

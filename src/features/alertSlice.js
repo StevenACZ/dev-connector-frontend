@@ -13,7 +13,7 @@ export const alertSlice = createSlice({
     },
     removeAlert: ( state, action ) => {
       return state.filter( alert => alert.id !== action.payload );
-    }
+    },
   }
 });
 

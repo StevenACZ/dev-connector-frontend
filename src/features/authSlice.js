@@ -7,6 +7,9 @@ import axios from '../axios/index';
 // Reducers
 import { setAlertAsync } from './alertSlice';
 
+// Utils
+import setAuthToken from "../utils/setAuthToken";
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -20,18 +23,29 @@ export const authSlice = createSlice({
       localStorage.setItem('token', action.payload.token);
       state.token = action.payload.token;
       state.isAuthenticated = true;
-      state.loading = false
+      state.loading = false;
     },
     registerFail: state => {
       localStorage.removeItem('token');
       state.token = null;
       state.isAuthenticated = false;
-      state.loading = false
+      state.loading = false;
+    },
+    userLoaded: ( state, action ) => {
+      state.isAuthenticated = true;
+      state.loading = false;
+      state.user = action.payload;
+    },
+    authError: state => {
+      localStorage.removeItem('token');
+      state.token = null;
+      state.isAuthenticated = false;
+      state.loading = false;
     }
   }
 });
 
-export const { registerSuccess, registerFail } = authSlice.actions;
+export const { registerSuccess, registerFail, userLoaded, authError } = authSlice.actions;
 
 // ACTIONS
 export const register = ( name, email, password ) => async dispatch => {
@@ -57,5 +71,19 @@ export const register = ( name, email, password ) => async dispatch => {
     dispatch( registerFail() );
   }
 };
+
+export const loadUser = () => async dispatch => {
+  if ( localStorage.token ) {
+    setAuthToken( localStorage.token );
+  }
+
+  try {
+    const res = await axios.get('/api/auth');
+
+    dispatch( userLoaded( res.data ) );
+  } catch ( err ) {
+    dispatch( authError() );
+  }
+}
 
 export default authSlice.reducer;
