@@ -1,7 +1,7 @@
 // React
 import React from 'react'
 
-// React Router
+// React router
 import { Link } from 'react-router-dom'
 
 // Redux
