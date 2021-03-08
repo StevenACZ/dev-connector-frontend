@@ -123,10 +123,6 @@ export const login = ( email, password ) => async dispatch => {
   }
 };
 
-// export const logout = () => dispatch => {
-//   dispatch( logoutUser() );
-// }
-
 export const loadUser = () => async dispatch => {
   if ( localStorage.token ) {
     setAuthToken( localStorage.token );
