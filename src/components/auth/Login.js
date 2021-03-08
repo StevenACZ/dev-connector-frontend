@@ -2,9 +2,19 @@
 import React, { useState } from 'react'
 
 // React router
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
+
+// Redux - Reducer
+import { login } from '../../features/authSlice';
+import { selectIsAuthenticated } from '../../features/authSlice';
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector( selectIsAuthenticated );
+
   const [ formData, setFormData ] = useState({
     email: '',
     password: ''
@@ -16,7 +26,13 @@ const Login = () => {
   
   const onSubmit = e => {
     e.preventDefault();
+
+    dispatch( login( email, password ) );
   };
+
+  if ( isAuthenticated ) {
+    return <Redirect to='/dashboard' />
+  }
 
   return (
     <>

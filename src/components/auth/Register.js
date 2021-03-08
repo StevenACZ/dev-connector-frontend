@@ -2,17 +2,18 @@
 import React, { useState } from 'react';
 
 // React router
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 // Redux
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Redux - Reducers
-import { register } from '../../features/authSlice';
 import { setAlertAsync } from '../../features/alertSlice';
+import { register, selectIsAuthenticated } from '../../features/authSlice';
 
 const Register = () => {
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector( selectIsAuthenticated );
 
   const [ formData, setFormData ] = useState({
     name: '',
@@ -44,6 +45,10 @@ const Register = () => {
         )
       );
     }
+  }
+
+  if ( isAuthenticated ) {
+    return <Redirect to='/dashboard' />
   }
 
   return (

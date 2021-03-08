@@ -31,6 +31,18 @@ export const authSlice = createSlice({
       state.isAuthenticated = false;
       state.loading = false;
     },
+    loginSuccess: ( state, action ) => {
+      localStorage.setItem('token', action.payload.token);
+      state.token = action.payload.token;
+      state.isAuthenticated = true;
+      state.loading = false;
+    },
+    loginFail: state => {
+      localStorage.removeItem('token');
+      state.token = null;
+      state.isAuthenticated = false;
+      state.loading = false;
+    },
     userLoaded: ( state, action ) => {
       state.isAuthenticated = true;
       state.loading = false;
@@ -45,7 +57,14 @@ export const authSlice = createSlice({
   }
 });
 
-export const { registerSuccess, registerFail, userLoaded, authError } = authSlice.actions;
+export const {
+  registerSuccess,
+  registerFail,
+  loginSuccess,
+  loginFail,
+  userLoaded,
+  authError
+} = authSlice.actions;
 
 // ACTIONS
 export const register = ( name, email, password ) => async dispatch => {
@@ -72,6 +91,31 @@ export const register = ( name, email, password ) => async dispatch => {
   }
 };
 
+export const login = ( email, password ) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  const body = JSON.stringify( { email, password } );
+
+  try {
+    const res = await axios.post( '/api/auth', body, config );
+
+    dispatch( loginSuccess( res.data ) );
+    dispatch( loadUser() );
+  } catch ( err ) {
+    const errors = err.response.data.errors;
+
+    if ( errors ) {
+      errors.forEach( error => dispatch( setAlertAsync( error.msg, 'dange' ) ) );
+    };
+
+    dispatch( loginFail() );
+  }
+};
+
 export const loadUser = () => async dispatch => {
   if ( localStorage.token ) {
     setAuthToken( localStorage.token );
@@ -87,6 +131,7 @@ export const loadUser = () => async dispatch => {
 }
 
 // SELECT
-export const selectUser = state => state.user;
+export const selectUser = state => state.auth.user;
+export const selectIsAuthenticated = state => state.auth.isAuthenticated;
 
 export default authSlice.reducer;
