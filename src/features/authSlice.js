@@ -53,6 +53,12 @@ export const authSlice = createSlice({
       state.token = null;
       state.isAuthenticated = false;
       state.loading = false;
+    },
+    logout: state => {
+      localStorage.removeItem('token');
+      state.token = null;
+      state.isAuthenticated = false;
+      state.loading = false;
     }
   }
 });
@@ -63,7 +69,8 @@ export const {
   loginSuccess,
   loginFail,
   userLoaded,
-  authError
+  authError,
+  logout
 } = authSlice.actions;
 
 // ACTIONS
@@ -116,6 +123,10 @@ export const login = ( email, password ) => async dispatch => {
   }
 };
 
+// export const logout = () => dispatch => {
+//   dispatch( logoutUser() );
+// }
+
 export const loadUser = () => async dispatch => {
   if ( localStorage.token ) {
     setAuthToken( localStorage.token );
@@ -133,5 +144,6 @@ export const loadUser = () => async dispatch => {
 // SELECT
 export const selectUser = state => state.auth.user;
 export const selectIsAuthenticated = state => state.auth.isAuthenticated;
+export const selectLoading = state => state.auth.loading;
 
 export default authSlice.reducer;
