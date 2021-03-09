@@ -6,6 +6,7 @@ import axios from '../axios/index';
 
 // Reducers
 import { setAlertAsync } from './alertSlice';
+import { clearProfile } from "./profileSlice";
 
 // Utils
 import setAuthToken from "../utils/setAuthToken";
@@ -54,11 +55,12 @@ export const authSlice = createSlice({
       state.isAuthenticated = false;
       state.loading = false;
     },
-    logout: state => {
+    logoutUser: state => {
       localStorage.removeItem('token');
       state.token = null;
       state.isAuthenticated = false;
       state.loading = false;
+      state.user = null;
     }
   }
 });
@@ -70,7 +72,7 @@ export const {
   loginFail,
   userLoaded,
   authError,
-  logout
+  logoutUser
 } = authSlice.actions;
 
 // ACTIONS
@@ -122,6 +124,11 @@ export const login = ( email, password ) => async dispatch => {
     dispatch( loginFail() );
   }
 };
+
+export const logout = () => dispatch => {
+  dispatch( logoutUser() );
+  dispatch( clearProfile() );
+}
 
 export const loadUser = () => async dispatch => {
   if ( localStorage.token ) {
