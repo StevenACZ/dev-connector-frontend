@@ -24,11 +24,21 @@ export const profileSlice = createSlice({
     profileError: ( state, action ) => {
       state.error = action.payload;
       state.loading = false;
+    },
+    clearProfile: state => {
+      state.profile = null;
+      state.profiles = null;
+      state.repos = [];
+      state.loading = false;
     }
   }
 });
 
-export const { getProfile, profileError } = profileSlice.actions;
+export const {
+  getProfile,
+  profileError,
+  clearProfile
+} = profileSlice.actions;
 
 // ACTIONS
 export const getCurrentProfile = () => async dispatch => {
@@ -47,5 +57,9 @@ export const getCurrentProfile = () => async dispatch => {
     );
   }
 }
+
+// SELECT
+export const selectProfile = state => state.profile.profile;
+export const selectLoading = state => state.profile.loading;
 
 export default profileSlice.reducer;
