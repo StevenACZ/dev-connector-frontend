@@ -22,6 +22,9 @@ const Navbar = () => {
   const authLinks = (
     <ul>
       <li>
+        <Link to='dashboard'>Dashboard</Link>
+      </li>
+      <li>
         <a
           onClick={ () => dispatch( logout() ) }
           href='!#'
