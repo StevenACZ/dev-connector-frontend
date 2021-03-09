@@ -4,9 +4,6 @@ import { createSlice } from "@reduxjs/toolkit";
 // Axios
 import axios from '../axios/index';
 
-// Reducers
-// import { setAlertAsync } from './alertSlice';
-
 export const profileSlice = createSlice({
   name: 'profile',
   initialState: {
