@@ -40,8 +40,7 @@ const AppRouter = () => {
 
   useEffect(() => {
     dispatch( loadUser() );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [ dispatch ]);
 
   return (
     <HashRouter>
