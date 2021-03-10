@@ -1,7 +1,7 @@
 // React
 import React, { useEffect } from 'react';
 
-// React router
+// React Router
 import {
   HashRouter,
   Redirect,
