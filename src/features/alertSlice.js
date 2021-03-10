@@ -20,7 +20,7 @@ export const alertSlice = createSlice({
 export const { setAlert, removeAlert } = alertSlice.actions;
 
 // ACTIONS
-export const setAlertAsync = ( msg, alertType, timeout = 5000 ) => dispatch => {
+export const setAlertAsync = ( msg, alertType, timeout = 4000 ) => dispatch => {
   const id = uuidv4();
 
   dispatch(

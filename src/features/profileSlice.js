@@ -2,7 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // Redux - Reducers
-import { setAlert, setAlertAsync } from "./alertSlice";
+import { setAlertAsync } from "./alertSlice";
 
 // Axios
 import axios from '../axios/index';
@@ -66,7 +66,7 @@ export const createProfile = (
   try {
     const config = {
       headers: {
-        'Content-type': 'application/json'
+        'Content-Type': 'application/json'
       }
     };
 
@@ -75,7 +75,7 @@ export const createProfile = (
     dispatch( getProfile( res.data ) );
 
     dispatch(
-      setAlert( edit ? 'Profile Updated' : 'Profile Created', 'success' )
+      setAlertAsync( edit ? 'Profile Updated' : 'Profile Created', 'success', 3000 )
     );
 
     if ( !edit ) {
