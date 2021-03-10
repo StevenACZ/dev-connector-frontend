@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react';
 
 // React Router
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
 
 // Redux - Reducers
 import {
