@@ -1,6 +1,9 @@
 // React
 import React, { useState } from 'react';
 
+// React - Router
+import { Link } from 'react-router-dom';
+
 // Redux
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -252,12 +255,12 @@ const CreateProfile = () => {
         />
 
         {/* Button - Go Back */}
-        <a
+        <Link
           className="btn btn-light my-1"
-          href="dashboard.html"
+          to="/dashboard"
         >
           Go Back
-        </a>
+        </Link>
       </form>
     </>
   )
