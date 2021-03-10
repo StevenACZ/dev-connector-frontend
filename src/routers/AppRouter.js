@@ -27,6 +27,7 @@ import Landing from '../components/layout/Landing';
 import Navbar from '../components/layout/Navbar';
 import Dashboard from '../components/dashboard/Dashboard';
 import CreateProfile from '../components/profile-forms/create-profile/CreateProfile';
+import EditProfile from '../components/profile-forms/edit-profile/EditProfile';
 
 if ( localStorage.token ) {
   setAuthToken( localStorage.token );
@@ -52,6 +53,7 @@ const AppRouter = () => {
             <Route exact path='/login' component={ Login } />
             <Route exact path='/register' component={ Register } />
             <Route exact path='/create-profile' component={ CreateProfile } />
+            <Route exact path='/edit-profile' component={ EditProfile } />
             <PrivateRoute exact path='/dashboard' component={ Dashboard } />
                 
             <Redirect to='/' />
