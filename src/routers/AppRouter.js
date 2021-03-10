@@ -28,6 +28,8 @@ import Navbar from '../components/layout/Navbar';
 import Dashboard from '../components/dashboard/Dashboard';
 import CreateProfile from '../components/profile-forms/create-profile/CreateProfile';
 import EditProfile from '../components/profile-forms/edit-profile/EditProfile';
+import AddExperience from '../components/profile-forms/add-experience/AddExperience';
+import AddEducation from '../components/profile-forms/add-education/AddEducation';
 
 if ( localStorage.token ) {
   setAuthToken( localStorage.token );
@@ -54,6 +56,8 @@ const AppRouter = () => {
             <Route exact path='/register' component={ Register } />
             <Route exact path='/create-profile' component={ CreateProfile } />
             <Route exact path='/edit-profile' component={ EditProfile } />
+            <Route exact path='/add-experience' component={ AddExperience } />
+            <Route exact path='/add-education' component={ AddEducation } />
             <PrivateRoute exact path='/dashboard' component={ Dashboard } />
                 
             <Redirect to='/' />
