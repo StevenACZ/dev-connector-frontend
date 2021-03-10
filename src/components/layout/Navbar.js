@@ -14,6 +14,16 @@ import {
   selectLoading
 } from '../../features/authSlice';
 
+// Ant Icons
+import {
+  UserOutlined,
+  LogoutOutlined,
+  LoginOutlined,
+  UserAddOutlined,
+  CodeOutlined,
+  CompassOutlined
+} from '@ant-design/icons';
+
 const Navbar = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector( selectIsAuthenticated );
@@ -22,14 +32,18 @@ const Navbar = () => {
   const authLinks = (
     <ul>
       <li>
-        <Link to='dashboard'>Dashboard</Link>
+        <Link to='dashboard'>
+          <UserOutlined />
+          <span>Dashboard</span>
+        </Link>
       </li>
       <li>
         <a
           onClick={ () => dispatch( logout() ) }
           href='!#'
         >
-          Logout
+          <LogoutOutlined />
+          <span>Logout</span>
         </a>
       </li>
     </ul>
@@ -38,13 +52,22 @@ const Navbar = () => {
   const guestLinks = (
     <ul>
       <li>
-        <Link to="/profiles">Developers</Link>
+        <Link to="/profiles">
+          <CompassOutlined />
+          <span>Developers</span>
+        </Link>
       </li>
       <li>
-        <Link to="/register">Register</Link>
+        <Link to="/register">
+          <UserAddOutlined />
+          <span>Register</span>
+        </Link>
       </li>
       <li>
-        <Link to="/login">Login</Link>
+        <Link to="/login">
+          <LoginOutlined />
+          <span>Login</span>
+        </Link>
       </li>
     </ul>
 
@@ -54,7 +77,8 @@ const Navbar = () => {
     <header className="navbar bg-dark">
       <h1>
         <Link to="index.html">
-          <i className="fas fa-code"></i> DevConnector
+          <CodeOutlined />
+          <span>DevConnector</span>
         </Link>
       </h1>
       

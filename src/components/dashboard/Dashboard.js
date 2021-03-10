@@ -14,6 +14,7 @@ import { getCurrentProfile } from '../../features/profileSlice';
 
 // Components
 import Spinner from '../spinner/Spinner';
+import DashboardActions from './DashboardActions';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -43,7 +44,7 @@ const Dashboard = () => {
                 profile != null
                   ?
                     <>
-                      has
+                      <DashboardActions />
                     </>
                   :
                     <>
