@@ -1,4 +1,5 @@
-import React from 'react'
+// React
+import React from 'react';
 
 // React Router
 import { Link, Redirect } from 'react-router-dom'

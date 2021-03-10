@@ -1,8 +1,8 @@
 // React
-import React from 'react'
+import React from 'react';
 
-// React router
-import { Link } from 'react-router-dom'
+// React Router
+import { Link } from 'react-router-dom';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';

@@ -1,7 +1,7 @@
 // React
 import React, { useState } from 'react';
 
-// React router
+// React Router
 import { Link, Redirect } from 'react-router-dom';
 
 // Redux

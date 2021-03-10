@@ -1,7 +1,7 @@
 // Redux
 import { createSlice } from "@reduxjs/toolkit";
 
-// Reducers
+// Redux - Reducers
 import { setAlert, setAlertAsync } from "./alertSlice";
 
 // Axios

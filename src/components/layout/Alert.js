@@ -3,6 +3,8 @@ import React from 'react';
 
 // Redux
 import { useSelector } from 'react-redux';
+
+// Redux - Reducers
 import { selectAlerts } from '../../features/alertSlice';
 
 const Alert = () => {

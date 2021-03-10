@@ -1,12 +1,12 @@
 // Redux
 import { createSlice } from "@reduxjs/toolkit";
 
-// Axios
-import axios from '../axios/index';
-
-// Reducers
+// Redux - Reducers
 import { setAlertAsync } from './alertSlice';
 import { clearProfile } from "./profileSlice";
+
+// Axios
+import axios from '../axios/index';
 
 // Utils
 import setAuthToken from "../utils/setAuthToken";

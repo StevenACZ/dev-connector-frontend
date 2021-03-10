@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 // Redux
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
+
+// Redux - Reducers
 import { createProfile } from '../../../features/profileSlice';
 
 const CreateProfile = () => {
