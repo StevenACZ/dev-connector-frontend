@@ -3,19 +3,22 @@ import React, { useState } from 'react';
 
 // React - Router
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 // Redux
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
 
 // Redux - Reducers
 import { createProfile } from '../../../features/profileSlice';
+
+// Custom Hooks
+import useForm from '../../../customHooks/useForm';
 
 const CreateProfile = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [ formData, setFormData ] = useState({
+  const [ formData, , handleInputChange ] = useForm({
     company: '',
     website: '',
     location: '',
@@ -29,8 +32,6 @@ const CreateProfile = () => {
     youtube: '',
     instagram: ''
   });
-
-  const [ displaySocialInputs, setDisplaySocialInputs ] = useState( false );
 
   const {
     company,
@@ -47,7 +48,7 @@ const CreateProfile = () => {
     instagram
   } = formData;
 
-  const onChange = e => setFormData( { ...formData, [ e.target.name ]: e.target.value } );
+  const [ displaySocialInputs, setDisplaySocialInputs ] = useState( false );
 
   const onSubmit = e => {
     e.preventDefault();
@@ -72,7 +73,7 @@ const CreateProfile = () => {
           <select
             name="status"
             value={ status }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           >
             <option value="0">* Select Professional Status</option>
             <option value="Developer">Developer</option>
@@ -95,7 +96,7 @@ const CreateProfile = () => {
             placeholder="Company"
             name="company"
             value={ company }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
           <small className="form-text">
             Could be your own company or one you work for
@@ -109,7 +110,7 @@ const CreateProfile = () => {
             placeholder="Website"
             name="website"
             value={ website }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
           <small className="form-text">
             Could be your own or a company website
@@ -123,7 +124,7 @@ const CreateProfile = () => {
             placeholder="Location"
             name="location"
             value={ location }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
           <small className="form-text">
             City & state suggested (eg. Boston, MA)
@@ -137,7 +138,7 @@ const CreateProfile = () => {
             placeholder="* Skills"
             name="skills"
             value={ skills }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
           <small className="form-text">
             Please use comma separated values (eg.
@@ -152,7 +153,7 @@ const CreateProfile = () => {
             placeholder="Github Username"
             name="githubusername"
             value={ githubusername }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
           <small className="form-text">
             If you want your latest repos and a Github link, include your
@@ -166,7 +167,7 @@ const CreateProfile = () => {
             placeholder="A short bio of yourself"
             name="bio"
             value={ bio }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           ></textarea>
           <small className="form-text">
             Tell us a little about yourself
@@ -197,7 +198,7 @@ const CreateProfile = () => {
                     placeholder="Twitter URL"
                     name="twitter"
                     value={ twitter }
-                    onChange={ onChange }
+                    onChange={ handleInputChange }
                   />
                 </div>
 
@@ -208,7 +209,7 @@ const CreateProfile = () => {
                     placeholder="Facebook URL"
                     name="facebook"
                     value={ facebook }
-                    onChange={ onChange }
+                    onChange={ handleInputChange }
                   />
                 </div>
 
@@ -219,7 +220,7 @@ const CreateProfile = () => {
                     placeholder="YouTube URL"
                     name="youtube"
                     value={ youtube }
-                    onChange={ onChange }
+                    onChange={ handleInputChange }
                   />
                 </div>
 
@@ -230,7 +231,7 @@ const CreateProfile = () => {
                     placeholder="Linkedin URL"
                     name="linkedin"
                     value={ linkedin }
-                    onChange={ onChange }
+                    onChange={ handleInputChange }
                   />
                 </div>
 
@@ -241,7 +242,7 @@ const CreateProfile = () => {
                     placeholder="Instagram URL"
                     name="instagram"
                     value={ instagram }
-                    onChange={ onChange }
+                    onChange={ handleInputChange }
                   />
                 </div>
               </>
