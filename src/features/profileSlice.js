@@ -1,6 +1,9 @@
 // Redux
 import { createSlice } from "@reduxjs/toolkit";
 
+// Reducers
+import { setAlert, setAlertAsync } from "./alertSlice";
+
 // Axios
 import axios from '../axios/index';
 
@@ -44,6 +47,47 @@ export const getCurrentProfile = () => async dispatch => {
 
     dispatch( getProfile( res.data ) );
   } catch ( err ) {
+    dispatch( 
+      profileError( 
+        {
+          msg: err.response.data.msg,
+          status: err.response.status
+        }
+      )
+    );
+  }
+}
+
+export const createProfile = (
+  formData,
+  history,
+  edit = false
+) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-type': 'application/json'
+      }
+    };
+
+    const res = await axios.post('/api/profile', formData, config);
+
+    dispatch( getProfile( res.data ) );
+
+    dispatch(
+      setAlert( edit ? 'Profile Updated' : 'Profile Created', 'success' )
+    );
+
+    if ( !edit ) {
+      history.push('/dashboard');
+    }
+  } catch ( err ) {
+    const errors = err.response.data.errors;
+
+    if ( errors ) {
+      errors.forEach( error => dispatch( setAlertAsync( error.msg, 'dange' ) ) );
+    };
+
     dispatch( 
       profileError( 
         {

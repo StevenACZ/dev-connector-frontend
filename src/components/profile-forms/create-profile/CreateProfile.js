@@ -2,9 +2,14 @@
 import React, { useState } from 'react';
 
 // Redux
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { createProfile } from '../../../features/profileSlice';
 
 const CreateProfile = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   const [ formData, setFormData ] = useState({
     company: '',
     website: '',
@@ -39,6 +44,11 @@ const CreateProfile = () => {
 
   const onChange = e => setFormData( { ...formData, [ e.target.name ]: e.target.value } );
 
+  const onSubmit = e => {
+    e.preventDefault();
+    dispatch( createProfile( formData, history ) );
+  }
+
   return (
     <>
       <h1 className="large text-primary">
@@ -49,7 +59,10 @@ const CreateProfile = () => {
         profile stand out
       </p>
       <small>* = required field</small>
-      <form className="form">
+      <form
+        className="form"
+        onSubmit={ onSubmit }
+      >
         <div className="form-group">
           <select
             name="status"
@@ -168,7 +181,6 @@ const CreateProfile = () => {
         </div>
 
         {/* Social Network URL */}
-
         {
           displaySocialInputs
             &&
