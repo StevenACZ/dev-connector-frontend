@@ -2,16 +2,16 @@
 import React from 'react';
 
 // Redux
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 // Redux - Reducers
+import { deleteEducation } from '../../../features/profileSlice';
 
 // Moment
 import Moment from 'react-moment';
 
 const Education = ({ education }) => {
-  // const dispatch = useDispatch();
-  // const history =  useHistory();
+  const dispatch = useDispatch();
 
   const educations = education.map( edu => (
     <tr key={ edu._id }>
@@ -27,7 +27,12 @@ const Education = ({ education }) => {
         }
       </td>
       <td>
-        <button className="btn btn-danger">Delete</button>
+        <button
+          className="btn btn-danger"
+          onClick={ () => dispatch( deleteEducation( edu._id ) ) }
+        >
+          Delete
+        </button>
       </td>
     </tr>
   ));
