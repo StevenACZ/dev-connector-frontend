@@ -312,6 +312,7 @@ export const deleteAccount = () => async dispatch => {
 
 // SELECT
 export const selectProfile = state => state.profile.profile;
+export const selectProfiles = state => state.profile.profiles;
 export const selectLoading = state => state.profile.loading;
 
 export default profileSlice.reducer;
