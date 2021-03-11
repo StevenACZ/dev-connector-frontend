@@ -8,7 +8,11 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Redux - Reducers
-import { selectLoading, selectProfile } from '../../features/profileSlice';
+import {
+  deleteAccount,
+  selectLoading,
+  selectProfile
+} from '../../features/profileSlice';
 import { selectUser } from '../../features/authSlice';
 import { getCurrentProfile } from '../../features/profileSlice';
 
@@ -48,6 +52,15 @@ const Dashboard = () => {
                       <DashboardActions />
                       <Experience experience={ profile.experience } />
                       <Education education={ profile.education } />
+
+                      <div className="my-2">
+                        <button
+                          className="btn btn-danger"
+                          onClick={ () => dispatch( deleteAccount() ) }
+                        >
+                          <span>Delete My Account</span>
+                        </button>
+                      </div>
                     </>
                   :
                     <>
