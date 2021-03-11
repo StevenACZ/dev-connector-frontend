@@ -53,10 +53,10 @@ const AppRouter = () => {
             <Route exact path='/' component={ Landing } />
             <Route exact path='/login' component={ Login } />
             <Route exact path='/register' component={ Register } />
-            <Route exact path='/create-profile' component={ CreateProfile } />
-            <Route exact path='/edit-profile' component={ EditProfile } />
-            <Route exact path='/add-experience' component={ AddExperience } />
-            <Route exact path='/add-education' component={ AddEducation } />
+            <PrivateRoute exact path='/create-profile' component={ CreateProfile } />
+            <PrivateRoute exact path='/edit-profile' component={ EditProfile } />
+            <PrivateRoute exact path='/add-experience' component={ AddExperience } />
+            <PrivateRoute exact path='/add-education' component={ AddEducation } />
             <PrivateRoute exact path='/dashboard' component={ Dashboard } />
                 
             <Redirect to='/' />
