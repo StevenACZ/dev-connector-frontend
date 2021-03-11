@@ -1,5 +1,5 @@
 // React
-import React, { useState } from 'react';
+import React from 'react';
 
 // React Router
 import { Link, Redirect } from 'react-router-dom';
@@ -11,11 +11,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setAlertAsync } from '../../features/alertSlice';
 import { register, selectIsAuthenticated } from '../../features/authSlice';
 
+// Custom Hooks
+import useForm from '../../customHooks/useForm';
+
 const Register = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector( selectIsAuthenticated );
 
-  const [ formData, setFormData ] = useState({
+  const [ formData, , handleInputChange ] = useForm({
     name: '',
     email: '',
     password: '',
@@ -24,8 +27,6 @@ const Register = () => {
 
   const { name, email, password, password2 } = formData;
 
-  const onChange = e => setFormData( { ...formData, [ e.target.name ]: e.target.value } );
-  
   const onSubmit = e => {
     e.preventDefault();
     if ( password !== password2 ) {
@@ -54,7 +55,7 @@ const Register = () => {
   return (
     <>
       <h1 className="large text-primary">Sign Up</h1>
-      <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
+      <p className="lead">Create Your Account</p>
 
       <form
         className="form"
@@ -68,7 +69,7 @@ const Register = () => {
             name="name"
             required
             value={ name }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
         </div>
         <div className="form-group">
@@ -77,7 +78,7 @@ const Register = () => {
             placeholder="Email Address"
             name="email"
             value={ email }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
           <small className="form-text"
             >This site uses Gravatar so if you want a profile image, use a
@@ -91,7 +92,7 @@ const Register = () => {
             name="password"
             minLength="6"
             value={ password }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
         </div>
         <div className="form-group">
@@ -101,7 +102,7 @@ const Register = () => {
             name="password2"
             minLength="6"
             value={ password2 }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Register" />
