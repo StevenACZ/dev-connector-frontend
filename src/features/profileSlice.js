@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // Redux - Reducers
 import { setAlertAsync } from "./alertSlice";
+import { accountDeleted } from "./authSlice";
 
 // Axios
 import axios from '../axios/index';
@@ -177,6 +178,72 @@ export const addEducation = (
         }
       )
     );
+  }
+}
+
+export const deleteExperience = id => async dispatch => {
+  try {
+    const res = await axios.delete(`/api/profile/experience/${ id }`);
+
+    dispatch( updateProfile( res.data ) );
+
+    dispatch(
+      setAlertAsync( 'Experience Removed', 'success', 3000 )
+    );
+  } catch ( err ) {
+    dispatch( 
+      profileError( 
+        {
+          msg: err.response.data.msg,
+          status: err.response.status
+        }
+      )
+    );
+  }
+}
+
+export const deleteEducation = id => async dispatch => {
+  try {
+    const res = await axios.delete(`/api/profile/education/${ id }`);
+
+    dispatch( updateProfile( res.data ) );
+
+    dispatch(
+      setAlertAsync( 'Education Removed', 'success', 3000 )
+    );
+  } catch ( err ) {
+    dispatch( 
+      profileError( 
+        {
+          msg: err.response.data.msg,
+          status: err.response.status
+        }
+      )
+    );
+  }
+}
+
+export const deleteAccount = () => async dispatch => {
+  if ( window.confirm('Are your sure? This can NOT be undone!') ) {
+    try {
+      await axios.delete('/api/profile/');
+  
+      dispatch( clearProfile() );
+      dispatch( accountDeleted() );
+  
+      dispatch(
+        setAlertAsync( 'Your account has been deleted', 3000 )
+      );
+    } catch ( err ) {
+      dispatch( 
+        profileError( 
+          {
+            msg: err.response.data.msg,
+            status: err.response.status
+          }
+        )
+      );
+    }
   }
 }
 
