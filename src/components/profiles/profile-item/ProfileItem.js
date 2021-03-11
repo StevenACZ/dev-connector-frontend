@@ -4,6 +4,11 @@ import React from 'react';
 // React Router
 import { Link } from 'react-router-dom';
 
+// Ant Icons
+import {
+  CheckOutlined
+} from '@ant-design/icons';
+
 const ProfileItem = ({
   user: {
     _id,
@@ -36,7 +41,7 @@ const ProfileItem = ({
               key={ index }
               className="text-primary"
             >
-              { skill }
+              <CheckOutlined /> { skill }
             </li>
           ))
         }
