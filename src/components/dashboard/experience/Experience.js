@@ -2,16 +2,16 @@
 import React from 'react';
 
 // Redux
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 // Redux - Reducers
+import { deleteExperience } from '../../../features/profileSlice';
 
 // Moment
 import Moment from 'react-moment';
 
 const Experience = ({ experience }) => {
-  // const dispatch = useDispatch();
-  // const history =  useHistory();
+  const dispatch = useDispatch();
 
   const experiences = experience.map( exp => (
     <tr key={ exp._id }>
@@ -27,7 +27,12 @@ const Experience = ({ experience }) => {
         }
       </td>
       <td>
-        <button className="btn btn-danger">Delete</button>
+        <button
+          className="btn btn-danger"
+          onClick={ () =>  dispatch( deleteExperience( exp._id ) )}
+        >
+          Delete
+        </button>
       </td>
     </tr>
   ));
