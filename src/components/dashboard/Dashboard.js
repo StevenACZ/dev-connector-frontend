@@ -15,6 +15,8 @@ import { getCurrentProfile } from '../../features/profileSlice';
 // Components
 import Spinner from '../spinner/Spinner';
 import DashboardActions from './DashboardActions';
+import Experience from './experience/Experience';
+import Education from './education/Education';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -44,6 +46,8 @@ const Dashboard = () => {
                   ?
                     <>
                       <DashboardActions />
+                      <Experience experience={ profile.experience } />
+                      <Education education={ profile.education } />
                     </>
                   :
                     <>
