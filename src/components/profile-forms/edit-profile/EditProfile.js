@@ -16,13 +16,16 @@ import {
   getCurrentProfile
 } from '../../../features/profileSlice';
 
+// Custom Hooks
+import useForm from '../../../customHooks/useForm';
+
 const EditProfile = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const profile = useSelector( selectProfile );
   const loading = useSelector( selectLoading );
 
-  const [ formData, setFormData ] = useState({
+  const [ formData, setFormData, handleInputChange ] = useForm({
     company: '',
     website: '',
     location: '',
@@ -44,7 +47,6 @@ const EditProfile = () => {
   }, [ loading, dispatch ]);
   
   useEffect(() => {
-    console.log( profile );
     setFormData({
       company:          loading || !profile.company         ? '' : profile.company,
       website:          loading || !profile.website         ? '' : profile.website,
@@ -59,7 +61,7 @@ const EditProfile = () => {
       linkedin:         loading || !profile.social          ? '' : profile.social.linkedin,
       instagram:        loading || !profile.social          ? '' : profile.social.instagram
     });
-  }, [ loading, profile ])
+  }, [ loading, profile, setFormData ]);
 
   const {
     company,
@@ -75,8 +77,6 @@ const EditProfile = () => {
     youtube,
     instagram
   } = formData;
-
-  const onChange = e => setFormData( { ...formData, [ e.target.name ]: e.target.value } );
 
   const onSubmit = e => {
     e.preventDefault();
@@ -101,7 +101,7 @@ const EditProfile = () => {
           <select
             name="status"
             value={ status }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           >
             <option value="0">* Select Professional Status</option>
             <option value="Developer">Developer</option>
@@ -124,7 +124,7 @@ const EditProfile = () => {
             placeholder="Company"
             name="company"
             value={ company }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
           <small className="form-text">
             Could be your own company or one you work for
@@ -138,7 +138,7 @@ const EditProfile = () => {
             placeholder="Website"
             name="website"
             value={ website }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
           <small className="form-text">
             Could be your own or a company website
@@ -152,7 +152,7 @@ const EditProfile = () => {
             placeholder="Location"
             name="location"
             value={ location }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
           <small className="form-text">
             City & state suggested (eg. Boston, MA)
@@ -166,7 +166,7 @@ const EditProfile = () => {
             placeholder="* Skills"
             name="skills"
             value={ skills }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
           <small className="form-text">
             Please use comma separated values (eg.
@@ -181,7 +181,7 @@ const EditProfile = () => {
             placeholder="Github Username"
             name="githubusername"
             value={ githubusername }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
           <small className="form-text">
             If you want your latest repos and a Github link, include your
@@ -195,7 +195,7 @@ const EditProfile = () => {
             placeholder="A short bio of yourself"
             name="bio"
             value={ bio }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           ></textarea>
           <small className="form-text">
             Tell us a little about yourself
@@ -220,62 +220,56 @@ const EditProfile = () => {
             &&
               <>
                 <div className="form-group social-input">
-                  {/* <i className="fab fa-twitter fa-2x"></i> */}
                   <input
                     type="text"
                     placeholder="Twitter URL"
                     name="twitter"
                     value={ twitter }
-                    onChange={ onChange }
+                    onChange={ handleInputChange }
                   />
                 </div>
 
                 <div className="form-group social-input">
-                  {/* <i className="fab fa-facebook fa-2x"></i> */}
                   <input
                     type="text"
                     placeholder="Facebook URL"
                     name="facebook"
                     value={ facebook }
-                    onChange={ onChange }
+                    onChange={ handleInputChange }
                   />
                 </div>
 
                 <div className="form-group social-input">
-                  {/* <i className="fab fa-youtube fa-2x"></i> */}
                   <input
                     type="text"
                     placeholder="YouTube URL"
                     name="youtube"
                     value={ youtube }
-                    onChange={ onChange }
+                    onChange={ handleInputChange }
                   />
                 </div>
 
                 <div className="form-group social-input">
-                  {/* <i className="fab fa-linkedin fa-2x"></i> */}
                   <input
                     type="text"
                     placeholder="Linkedin URL"
                     name="linkedin"
                     value={ linkedin }
-                    onChange={ onChange }
+                    onChange={ handleInputChange }
                   />
                 </div>
 
                 <div className="form-group social-input">
-                  {/* <i className="fab fa-instagram fa-2x"></i> */}
                   <input
                     type="text"
                     placeholder="Instagram URL"
                     name="instagram"
                     value={ instagram }
-                    onChange={ onChange }
+                    onChange={ handleInputChange }
                   />
                 </div>
               </>
         }
-
 
         {/* Button - Submit */}
         <input
