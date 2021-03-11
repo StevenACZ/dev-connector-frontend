@@ -1,5 +1,5 @@
 // React
-import React, { useState } from 'react'
+import React from 'react'
 
 // React Router
 import { Link, Redirect } from 'react-router-dom';
@@ -11,19 +11,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../features/authSlice';
 import { selectIsAuthenticated } from '../../features/authSlice';
 
+// Custom Hooks
+import useForm from '../../customHooks/useForm';
+
 const Login = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector( selectIsAuthenticated );
 
-  const [ formData, setFormData ] = useState({
+  const [ formData, , handleInputChange ] = useForm({
     email: '',
     password: ''
   });
 
   const { email, password } = formData;
 
-  const onChange = e => setFormData( { ...formData, [ e.target.name ]: e.target.value } );
-  
   const onSubmit = e => {
     e.preventDefault();
 
@@ -50,7 +51,7 @@ const Login = () => {
             placeholder="Email Address"
             name="email"
             value={ email }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
         </div>
         <div className="form-group">
@@ -60,10 +61,14 @@ const Login = () => {
             name="password"
             minLength="6"
             value={ password }
-            onChange={ onChange }
+            onChange={ handleInputChange }
           />
         </div>
-        <input type="submit" className="btn btn-primary" value="Login" />
+        <input
+          type="submit"
+          className="btn btn-primary"
+          value="Login"
+        />
       </form>
       <p className="my-1">
         Don't have an account? <Link to="/Register">Sign Up</Link>
