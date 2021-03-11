@@ -34,7 +34,7 @@ const Dashboard = () => {
             <Spinner />
           :
             <>
-              <h1 className="large text-primary">Hola</h1>
+              <h1 className="large text-primary">Dashboard</h1>
               <p className="lead">
                 Welcome { user && user.name }
               </p>
