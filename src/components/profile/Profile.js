@@ -18,6 +18,7 @@ import {
 // Components
 import Spinner from '../spinner/Spinner';
 import ProfileTop from './profile-top/ProfileTop';
+import ProfileAbout from './profile-about/ProfileAbout';
 
 const Profile = ({ match }) => {
   const dispatch = useDispatch();
@@ -59,6 +60,7 @@ const Profile = ({ match }) => {
 
               <div className="profile-grid my-1">
                 <ProfileTop { ...profile } />
+                <ProfileAbout { ...profile } />
               </div>
             </>
         }
