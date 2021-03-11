@@ -32,7 +32,13 @@ const Navbar = () => {
   const authLinks = (
     <ul>
       <li>
-        <Link to='dashboard'>
+        <Link to='/profiles'>
+          <CompassOutlined />
+          <span>Profiles</span>
+        </Link>
+      </li>
+      <li>
+        <Link to='/dashboard'>
           <UserOutlined />
           <span>Dashboard</span>
         </Link>
