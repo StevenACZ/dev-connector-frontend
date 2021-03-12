@@ -21,6 +21,7 @@ import ProfileTop from './profile-top/ProfileTop';
 import ProfileAbout from './profile-about/ProfileAbout';
 import ProfileExperience from './profile-experience/ProfileExperience';
 import ProfileEducation from './profile-education/ProfileEducation';
+import ProfileGithub from './profile-github/ProfileGithub';
 
 const Profile = ({ match }) => {
   const dispatch = useDispatch();
@@ -65,6 +66,7 @@ const Profile = ({ match }) => {
                 <ProfileAbout { ...profile } />
                 <ProfileExperience { ...profile } />
                 <ProfileEducation { ...profile } />
+                <ProfileGithub username={ profile.githubusername } />
               </div>
             </>
         }
