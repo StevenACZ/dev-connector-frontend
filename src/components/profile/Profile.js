@@ -19,6 +19,7 @@ import {
 import Spinner from '../spinner/Spinner';
 import ProfileTop from './profile-top/ProfileTop';
 import ProfileAbout from './profile-about/ProfileAbout';
+import ProfileExperience from './profile-experience/ProfileExperience';
 
 const Profile = ({ match }) => {
   const dispatch = useDispatch();
@@ -61,6 +62,7 @@ const Profile = ({ match }) => {
               <div className="profile-grid my-1">
                 <ProfileTop { ...profile } />
                 <ProfileAbout { ...profile } />
+                <ProfileExperience { ...profile } />
               </div>
             </>
         }
