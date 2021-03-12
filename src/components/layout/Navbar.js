@@ -44,13 +44,13 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <a
+        <Link
+          to='/'
           onClick={ () => dispatch( logout() ) }
-          href='!#'
         >
           <LogoutOutlined />
           <span>Logout</span>
-        </a>
+        </Link>
       </li>
     </ul>
   );
