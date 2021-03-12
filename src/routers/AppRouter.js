@@ -49,23 +49,23 @@ const AppRouter = () => {
       <>
         <Navbar />
 
-        <main className="container">
           <Alert />
           <Switch>
             <Route exact path='/' component={ Landing } />
-            <Route exact path='/login' component={ Login } />
-            <Route exact path='/register' component={ Register } />
-            <Route exact path='/profiles' component={ Profiles } />
-            <Route exact path='/profile/:id' component={ Profile } />
-            <PrivateRoute exact path='/create-profile' component={ CreateProfile } />
-            <PrivateRoute exact path='/edit-profile' component={ EditProfile } />
-            <PrivateRoute exact path='/add-experience' component={ AddExperience } />
-            <PrivateRoute exact path='/add-education' component={ AddEducation } />
-            <PrivateRoute exact path='/dashboard' component={ Dashboard } />
+              <main className="container">
+                <Route exact path='/login' component={ Login } />
+                <Route exact path='/register' component={ Register } />
+                <Route exact path='/profiles' component={ Profiles } />
+                <Route exact path='/profile/:id' component={ Profile } />
+                <PrivateRoute exact path='/create-profile' component={ CreateProfile } />
+                <PrivateRoute exact path='/edit-profile' component={ EditProfile } />
+                <PrivateRoute exact path='/add-experience' component={ AddExperience } />
+                <PrivateRoute exact path='/add-education' component={ AddEducation } />
+                <PrivateRoute exact path='/dashboard' component={ Dashboard } />
+              </main>
                 
-            <Redirect to='/' />
+            {/* <Redirect to='/' /> */}
           </Switch>
-        </main>
       </>
     </HashRouter>
   )
