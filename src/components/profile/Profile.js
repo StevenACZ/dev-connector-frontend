@@ -20,6 +20,7 @@ import Spinner from '../spinner/Spinner';
 import ProfileTop from './profile-top/ProfileTop';
 import ProfileAbout from './profile-about/ProfileAbout';
 import ProfileExperience from './profile-experience/ProfileExperience';
+import ProfileEducation from './profile-education/ProfileEducation';
 
 const Profile = ({ match }) => {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ const Profile = ({ match }) => {
                 <ProfileTop { ...profile } />
                 <ProfileAbout { ...profile } />
                 <ProfileExperience { ...profile } />
+                <ProfileEducation { ...profile } />
               </div>
             </>
         }
