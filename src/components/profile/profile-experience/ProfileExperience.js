@@ -28,9 +28,13 @@ const ProfileExperience = ({ experience }) => {
                         <Moment format='YYYY/MM/DD'>{ from }</Moment>
                         - { !to ? ' Now' : <Moment format='YYYY/MM/DD'>{ to }</Moment> }
                       </p>
-                      <p><strong>Position: </strong>{ title }</p>
                       <p>
-                        <strong>Description: </strong>{ description }
+                        <strong>Position: </strong>
+                        { title }
+                      </p>
+                      <p>
+                        <strong>Description: </strong>
+                        { description }
                       </p>
                     </div>
                   ))
