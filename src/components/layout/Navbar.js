@@ -82,7 +82,7 @@ const Navbar = () => {
   return (
     <header className="navbar bg-dark">
       <h1>
-        <Link to="index.html">
+        <Link to="/">
           <CodeOutlined />
           <span>DevConnector</span>
         </Link>
