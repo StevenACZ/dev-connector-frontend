@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 // React Router
 import {
   HashRouter,
-  Redirect,
   Route,
   Switch
 } from 'react-router-dom';
