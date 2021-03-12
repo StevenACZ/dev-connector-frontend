@@ -280,7 +280,7 @@ const EditProfile = () => {
         {/* Button - Go Back */}
         <Link
           className="btn btn-light my-1"
-          to="/dashboard"
+          onClick={ () => history.goBack() }
         >
           Go Back
         </Link>
