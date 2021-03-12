@@ -27,7 +27,7 @@ const ProfileTop = ({
       <img
         className="round-img my-1"
         src={ avatar }
-        alt=""
+        alt={ name }
       />
       <h1 className="large">{ name }</h1>
       <p className="lead">{ status } { company && <span>at { company }</span> }</p>

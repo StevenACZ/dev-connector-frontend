@@ -2,16 +2,10 @@
 import React from 'react';
 
 const ProfileAbout = ({
-  status,
-  company,
-  location,
-  website,
-  social,
   bio,
   skills,
   user: {
-    name,
-    avatar
+    name
   }
 }) => {
   return (
